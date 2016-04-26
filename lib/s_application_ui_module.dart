@@ -2,17 +2,27 @@ library ng_dart_ombdbapi;
 
 @MirrorsUsed(targets: const ['ng_dart_ombdbapi'], override: '*')
 import 'dart:mirrors';
+import 'dart:async';
+import 'dart:html';
+
 import 'package:angular/angular.dart';
 
 part 'components/hello_world.dart';
+part 'components/search_movie.dart';
 
 part 'injectable/s_router.dart';
+part 'injectable/s_omdb_service.dart';
 
 class ApplicationUiModule extends Module {
 
   ApplicationUiModule() {
+
     // Component
     bind(HelloWorld);
+    bind(SearchMovie);
+
+    // Service
+    bind(SOMDBService);
 
     // Routing
     bind(RouteInitializerFn, toImplementation: SRouter);
