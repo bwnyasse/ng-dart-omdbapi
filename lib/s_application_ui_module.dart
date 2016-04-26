@@ -13,6 +13,7 @@ import 'dart:convert';
 part 'components/hello_world.dart';
 part 'components/search_movie_box.dart';
 part 'components/search_movie_result.dart';
+part 'components/search_movie_result_full_detail.dart';
 
 part 'injectable/s_router.dart';
 part 'injectable/s_omdb_service.dart';
@@ -27,6 +28,7 @@ class ApplicationUiModule extends Module {
     bind(HelloWorld);
     bind(SearchMovieBox);
     bind(SearchMovieResult);
+    bind(SearchMovieResultFullDetail);
 
     // Service
     bind(SOMDBService);

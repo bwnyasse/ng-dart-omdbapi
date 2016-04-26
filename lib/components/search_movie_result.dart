@@ -6,6 +6,8 @@ part of ng_dart_ombdbapi;
     useShadowDom: false)
 class SearchMovieResult extends ShadowRootAware{
 
+  String movieDetailRoute = SRouter.MOVIE_DETAIL;
+
   SOMDBService service;
   Movie movie;
 
