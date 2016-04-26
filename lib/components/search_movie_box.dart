@@ -1,15 +1,15 @@
 part of ng_dart_ombdbapi;
 
 @Component(
-    selector: 'search-movie',
-    templateUrl: 'packages/ng_dart_ombdbapi/components/search_movie.html',
+    selector: 'search-movie-box',
+    templateUrl: 'packages/ng_dart_ombdbapi/components/search_movie_box.html',
     useShadowDom: false)
-class SearchMovie {
+class SearchMovieBox {
 
   String title;
   SOMDBService service;
 
-  SearchMovie(this.service);
+  SearchMovieBox(this.service);
 
   findMovie() {
     if (quiver_strings.isNotEmpty(title)) {

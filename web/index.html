@@ -6,6 +6,11 @@
     <meta http-equiv="Content-Security-Policy"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="spike.css">
+
     <!-- POLYFILLS Support script -->
     <script src="packages/web_components/webcomponents.min.js"></script>
     <script src="packages/web_components/dart_support.js"></script>
@@ -14,8 +19,9 @@
 </head>
 
 <body class="ng-cloak">
-
-<ng-view></ng-view>
+<div class='container'>
+    <ng-view></ng-view>
+</div>
 
 <!--  DART Script -->
 <script data-pub-inline src="packages/browser/dart.js"></script>
