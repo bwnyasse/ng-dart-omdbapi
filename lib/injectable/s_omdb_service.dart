@@ -5,6 +5,8 @@ class SOMDBService {
 
   static String _API_OMDB_URL = 'http://www.omdbapi.com/';
 
+  MovieChangeNotifier movieChangeNotifier = new MovieChangeNotifier(null);
+
   void findMovieByTitle(String title) {
     Map map = {};
     map['t'] = title;
@@ -14,7 +16,9 @@ class SOMDBService {
     final String url = _API_OMDB_URL + _encodeMapQueryParametersAsUrl(map);
 
     _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
-      window.alert(response.responseText);
+      Map json = JSON.decode(response.responseText);
+      Movie movie = new Movie.fromOMDBApi(json);
+      movieChangeNotifier.value = movie;
     });
   }
 
