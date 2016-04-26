@@ -1,0 +1,26 @@
+name: 'ng_dart_ombdbapi'
+version: 0.0.1
+
+author: <Boris-Wilfried>
+
+environment:
+  sdk: '>=1.8.3 <2.0.0'
+
+dependencies:
+  analyzer: "^0.26.2+1"
+  browser: any
+  angular: any
+  web_components: any
+  script_inliner: any
+  dart_to_js_script_rewriter: any
+
+transformers:
+- angular
+- script_inliner
+- dart_to_js_script_rewriter
+- $dart2js:
+    csp: true # Content Security Policy
+    checked: false
+    $exclude: bin
+    minify: true
+    commandLineOptions: ['--enable-experimental-mirrors','--trust-type-annotations', '--trust-primitives']
