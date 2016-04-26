@@ -7,8 +7,13 @@ part of ng_dart_ombdbapi;
 class SearchMovie {
 
   String title;
+  SOMDBService service;
 
-  SearchMovie();
+  SearchMovie(this.service);
 
-  findMovie() => window.alert("Yeah");
+  findMovie() {
+    if (quiver_strings.isNotEmpty(title)) {
+      service.findMovieByTitle(title);
+    }
+  }
 }

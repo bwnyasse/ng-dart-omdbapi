@@ -13,7 +13,7 @@ dependencies:
   web_components: any
   script_inliner: any
   dart_to_js_script_rewriter: any
-
+  quiver: any
 transformers:
 - angular
 - script_inliner

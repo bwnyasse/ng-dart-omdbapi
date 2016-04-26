@@ -6,6 +6,7 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart';
+import 'package:quiver/strings.dart' as quiver_strings;
 
 part 'components/hello_world.dart';
 part 'components/search_movie.dart';

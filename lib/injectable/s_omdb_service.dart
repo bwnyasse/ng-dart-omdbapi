@@ -3,9 +3,9 @@ part of ng_dart_ombdbapi;
 @Injectable()
 class SOMDBService {
 
-  static String _API_OMDB_URL = 'http://www.omdbapi.com/?';
+  static String _API_OMDB_URL = 'http://www.omdbapi.com/';
 
-  void findMovieByTitle(String title){
+  void findMovieByTitle(String title) {
     Map map = {};
     map['t'] = title;
     map['plot'] = 'short';
@@ -13,25 +13,23 @@ class SOMDBService {
 
     final String url = _API_OMDB_URL + _encodeMapQueryParametersAsUrl(map);
 
-    _performServerApiCall(url,method:'GET').then((HttpRequest response) {
+    _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
       window.alert(response.responseText);
     });
-
   }
 
   Future<HttpRequest> _performServerApiCall(String url,
       {String sendData: null, String method: 'POST'}) async {
     // Specify JSON as content Type
-    Map<String, String> requestHeaders = {'Content-Type': 'application/json'};
 
     // Init the http request
     Future<HttpRequest> httpRequest;
     if (sendData == null) {
       httpRequest = HttpRequest.request(url,
-          method: method, requestHeaders: requestHeaders);
+          method: method);
     } else {
       httpRequest = HttpRequest.request(url,
-          method: method, requestHeaders: requestHeaders, sendData: sendData);
+          method: method, sendData: sendData);
     }
 
     return httpRequest;
