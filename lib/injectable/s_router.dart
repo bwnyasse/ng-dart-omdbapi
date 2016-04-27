@@ -5,40 +5,54 @@ class SRouter implements Function {
 
   static const String DEFAULT_VIEW_PATH = 'views/';
 
-  // View
-  static const String HOME = 'home';
-  static const String HOME_HTML = 'home.html';
-  static const String MOVIE_DETAIL = 'movieDetail';
-  static const String MOVIE_DETAIL_HTML = 'movie_detail.html';
+  // Views -----------------------------------------
+  /// Find
+  ///
+  static const String FIND = 'find';
+  static const String FIND_HTML = 'find.html';
+
+  /// Search
+  ///
+  static const String SEARCH = 'search';
+  static const String SEARCH_HTML = 'search.html';
+
+  /// Movie Full Detail
+  ///
+  static const String DETAIL = 'detail';
+  static const String DETAIL_HTML = 'detail.html';
+
+  SOMDBService service;
+
+  SRouter(this.service);
 
   call(Router router, RouteViewFactory viewFactory) {
     viewFactory.configure({
-      HOME : ngRoute(
+      // Find Route
+      FIND : ngRoute(
           defaultRoute: true,
-          path: '/' + HOME,
-          view: DEFAULT_VIEW_PATH + HOME_HTML,
-          preEnter: onHomeSRoutePreEnter,
-          enter: onHomeSRouteEnter),
+          path: '/' + FIND,
+          view: DEFAULT_VIEW_PATH + FIND_HTML),
 
-      MOVIE_DETAIL : ngRoute(
-          path: '/' + MOVIE_DETAIL,
-          view: DEFAULT_VIEW_PATH + MOVIE_DETAIL_HTML,
-          preEnter: onMovieDetailSRoutePreEnter,
-          enter: onMovieDetailSRouteEnter),
+      // Search Route
+      SEARCH : ngRoute(
+          path: '/' + SEARCH,
+          view: DEFAULT_VIEW_PATH + SEARCH_HTML),
+
+      // Movie Detail
+      DETAIL : ngRoute(
+          path: '/' + DETAIL + '/:title' + '/:year',
+          view: DEFAULT_VIEW_PATH + DETAIL_HTML,
+          preEnter: onDetailPreEnterEvent),
     });
   }
 
-  // Home
-  void onHomeSRoutePreEnter(RoutePreEnterEvent event) {
-  }
 
-  void onHomeSRouteEnter(RouteEnterEvent event) {
-  }
-
-  // Movie Detail
-  void onMovieDetailSRoutePreEnter(RoutePreEnterEvent event) {
-  }
-
-  void onMovieDetailSRouteEnter(RouteEnterEvent event) {
+  void onDetailPreEnterEvent(RoutePreEnterEvent event) {
+    //
+    var title = event.parameters['title'];
+    var year = event.queryParameters['year'];
+    print(title);
+    print(year);
+    service.findMovieByTitle(title, year);
   }
 }

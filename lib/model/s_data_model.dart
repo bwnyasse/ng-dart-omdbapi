@@ -1,9 +1,14 @@
 part of ng_dart_ombdbapi;
 
-class MovieChangeNotifier extends ChangeNotifier {
+/*************** SINGLE MOVIE ***************************/
+
+/**
+ * Change Notifier for Movie
+ */
+class FindMovieChangeNotifier extends ChangeNotifier {
   Movie _value;
 
-  MovieChangeNotifier(this._value);
+  FindMovieChangeNotifier(this._value);
 
   @reflectable
   get value => _value;
@@ -43,6 +48,39 @@ class Movie {
         Genre=json['Genre'],
         Language=json['Language'],
         Director=json['Director'];
+}
 
+/******************* SEARCH MODEL *******************************/
+/**
+ * Change Notifier for Search Movie
+ */
+class SearchMovieChangeNotifier extends ChangeNotifier {
+  SearchMovie _value;
+
+  SearchMovieChangeNotifier(this._value);
+
+  @reflectable
+  get value => _value;
+
+  @reflectable
+  set value(val) {
+    _value = notifyPropertyChange(#value, _value, val);
+  }
+}
+
+class SearchMovie {
+  List<Movie> movies = [];
+  String totalResults;
+
+  SearchMovie.fromOMDBApi(Map json){
+    totalResults = json['totalResults'];
+
+    // prepare movie from Json result
+    var searchResultsJson = json['Search'];
+    searchResultsJson.forEach((result) => movies.add(new Movie.fromOMDBApi(result)));
+    movies.sort((a,b)=> a.Year.compareTo(b.Year));
+
+  }
 
 }
+

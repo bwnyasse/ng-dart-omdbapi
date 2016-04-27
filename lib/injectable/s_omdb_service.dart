@@ -5,22 +5,43 @@ class SOMDBService {
 
   static String _API_OMDB_URL = 'http://www.omdbapi.com/';
 
-  MovieChangeNotifier movieChangeNotifier = new MovieChangeNotifier(null);
+  FindMovieChangeNotifier findMovieChangeNotifier = new FindMovieChangeNotifier(null);
+  SearchMovieChangeNotifier searchMovieChangeNotifier = new SearchMovieChangeNotifier(null);
 
-  void findMovieByTitle(String title) {
+  void findMovieByTitle(String title,[String year]) {
     Map map = {};
     map['t'] = title;
     map['plot'] = 'short';
     map['r'] = 'json';
+
+    if(quiver_strings.isNotEmpty(year)){
+      map['y'] = year;
+    }
 
     final String url = _API_OMDB_URL + _encodeMapQueryParametersAsUrl(map);
 
     _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
       Map json = JSON.decode(response.responseText);
       Movie movie = new Movie.fromOMDBApi(json);
-      movieChangeNotifier.value = movie;
+      findMovieChangeNotifier.value = movie;
     });
   }
+
+  void searchMovieWithApi(String searchValue){
+    Map map = {};
+    map['s'] = searchValue;
+
+    final String url = _API_OMDB_URL + _encodeMapQueryParametersAsUrl(map);
+
+    _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
+      Map json = JSON.decode(response.responseText);
+      SearchMovie searchMovie = new SearchMovie.fromOMDBApi(json);
+      print(searchMovie.totalResults.toString());
+      print(searchMovie.movies.length.toString());
+      searchMovieChangeNotifier.value = searchMovie;
+    });
+  }
+
 
   Future<HttpRequest> _performServerApiCall(String url,
       {String sendData: null, String method: 'POST'}) async {

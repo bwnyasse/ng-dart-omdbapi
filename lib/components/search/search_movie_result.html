@@ -1,0 +1,14 @@
+<div ng-show="canDisplay()" class='top-buffer'>
+
+    <h4> <span class="label label-primary">{{searchMovie.movies.length}} </span>  résultats </h4>
+
+    <div class="list-group">
+        <div ng-repeat="movie in searchMovie.movies" class="top-buffer">
+            <a ng-href="#/detail/{{movie.Title}}/{{movie.Year}}" class="list-group-item">{{movie.Title}} -- <b> {{movie.Year}} </b> </a>
+        </div>
+    </div>
+</div>
+
+<div ng-hide="canDisplay()" class="top-buffer">
+    Aucun résultat
+</div>

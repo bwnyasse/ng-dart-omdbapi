@@ -10,12 +10,18 @@ import 'package:quiver/strings.dart' as quiver_strings;
 import 'package:observe/observe.dart';
 import 'dart:convert';
 
-part 'components/hello_world.dart';
-part 'components/search_movie_box.dart';
-part 'components/search_movie_result.dart';
-part 'components/search_movie_result_full_detail.dart';
+part 'components/find/find_movie_by_title_box.dart';
+
+part 'components/find/find_movie_by_title_result.dart';
+
+part 'components/search/search_movie_box.dart';
+
+part 'components/search/search_movie_result.dart';
+
+part 'components/detail/movie_detail.dart';
 
 part 'injectable/s_router.dart';
+
 part 'injectable/s_omdb_service.dart';
 
 part 'model/s_data_model.dart';
@@ -23,12 +29,16 @@ part 'model/s_data_model.dart';
 class ApplicationUiModule extends Module {
 
   ApplicationUiModule() {
+    // Component / Find
+    bind(FindMovieByTitleBox);
+    bind(FindMovieByTitleResult);
 
-    // Component
-    bind(HelloWorld);
+    // Component / Search
     bind(SearchMovieBox);
     bind(SearchMovieResult);
-    bind(SearchMovieResultFullDetail);
+
+    // Component / Detail
+    bind(MovieDetail);
 
     // Service
     bind(SOMDBService);
