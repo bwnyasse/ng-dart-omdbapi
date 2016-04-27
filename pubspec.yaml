@@ -4,16 +4,17 @@ version: 0.0.1
 author: <Boris-Wilfried>
 
 environment:
-  sdk: '>=1.8.3 <2.0.0'
+  sdk: '>=1.13.1 <2.0.0'
 
 dependencies:
   analyzer: "^0.26.2+1"
-  browser: any
+  browser: ^0.10.0+2
   angular: any
   web_components: any
   script_inliner: any
   dart_to_js_script_rewriter: any
   quiver: any
+  chartjs: "^0.2.0+1"
 transformers:
 - angular
 - script_inliner

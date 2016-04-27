@@ -1,10 +1,17 @@
 <div ng-show="canDisplay()" class='top-buffer'>
 
-    <h4> <span class="label label-primary">{{searchMovie.movies.length}} </span>  résultats </h4>
+    <h4><span class="label label-primary">{{searchMovie.movies.length}} </span> results </h4>
 
-    <div class="list-group">
-        <div ng-repeat="movie in searchMovie.movies" class="top-buffer">
-            <a ng-href="#/detail/{{movie.Title}}/{{movie.Year}}" class="list-group-item">{{movie.Title}} -- <b> {{movie.Year}} </b> </a>
+    <div class="container">
+        <div id="search-movie-list-group-container-id" class="list-group col-md-6">
+            <div ng-class="{'ng-last': $last}" ng-repeat="movie in searchMovie.movies" class="top-buffer">
+                <a ng-href="#/detail/{{movie.Title}}/{{movie.Year}}" class="list-group-item">{{movie.Title}} -- <b>
+                    {{movie.Year}} </b> </a>
+            </div>
+        </div>
+
+        <div class="wrapper col-md-6">
+            <canvas id="canvas" height="150" width="150"></canvas>
         </div>
     </div>
 </div>

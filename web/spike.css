@@ -7,3 +7,10 @@
 .ng-hide {
     display: none !important;
 }
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: center;
+    font-style: italic;
+}

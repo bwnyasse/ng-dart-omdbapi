@@ -8,6 +8,7 @@ import 'dart:html';
 import 'package:angular/angular.dart';
 import 'package:quiver/strings.dart' as quiver_strings;
 import 'package:observe/observe.dart';
+import 'package:chartjs/chartjs.dart' as chart_js;
 import 'dart:convert';
 
 part 'components/find/find_movie_by_title_box.dart';
