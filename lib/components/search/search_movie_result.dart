@@ -39,7 +39,7 @@ class SearchMovieResult extends ShadowRootAware {
 
     var div1 = document.querySelector('#search-movie-list-group-container-id');
     new MutationObserver(_mutationCallbackEnsureToDisplayCanvas).observe(
-        div1, childList: true);
+        div1, childList: true, subtree:true);
   }
 
   canDisplay() => searchMovie != null && searchMovie.movies.length != 0;
@@ -51,11 +51,12 @@ class SearchMovieResult extends ShadowRootAware {
   void _mutationCallbackEnsureToDisplayCanvas(List<MutationRecord> mutations,
       MutationObserver observer) {
     mutations.forEach((mr) {
+        print("ici");
       mr.addedNodes.forEach((Node n) {
         if (n is Element) {
           if (n.classes.contains('ng-last') ||
               n.classes.contains('ng-last-add')) {
-            timer = new Timer(const Duration(milliseconds: 10), () {
+            timer = new Timer(const Duration(milliseconds: 30), () {
               _buildPieChart();
               timer.cancel();
             });

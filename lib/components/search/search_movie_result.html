@@ -4,10 +4,25 @@
 
     <div class="container">
         <div id="search-movie-list-group-container-id" class="list-group col-md-6">
-            <div ng-class="{'ng-last': $last}" ng-repeat="movie in searchMovie.movies" class="top-buffer">
-                <a ng-href="#/detail/{{movie.Title}}/{{movie.Year}}" class="list-group-item">{{movie.Title}} -- <b>
-                    {{movie.Year}} </b> </a>
-            </div>
+            <table class="table table-striped top-buffer">
+                <tbody>
+                <tr>
+                    <th> # </th>
+                    <th>Title</th>
+                    <th>Year</th>
+                </tr>
+                <tr ng-class="{'ng-last': $last}" ng-repeat="movie in searchMovie.movies track by $index">
+                    <td>{{$index+1}}</td>
+                    <td><a ng-href="#/detail/{{movie.Title}}/{{movie.Year}}">{{movie.Title}}</a></td>
+                    <td>{{movie.Year}}</td>
+                </tr>
+                <tbody>
+            </table>
+
+            <!-- <div  >
+                  class="list-group-item">{{movie.Title}} -- <b>
+                      </b> </a>
+             </div>-->
         </div>
 
         <div class="wrapper col-md-6">
