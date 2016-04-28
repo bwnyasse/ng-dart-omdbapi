@@ -2,8 +2,7 @@ part of ng_dart_ombdbapi;
 
 @Component(
     selector: 'search-movie-box-cmp',
-    templateUrl: 'packages/ng_dart_ombdbapi/components/search/search_movie_box_cmp.html',
-    useShadowDom: false)
+    templateUrl: 'package:ng_dart_ombdbapi/components/search/search_movie_box_cmp.html')
 class SearchMovieBoxCmp {
 
   String searchValue;

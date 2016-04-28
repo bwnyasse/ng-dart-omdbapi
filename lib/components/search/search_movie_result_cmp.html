@@ -1,37 +1,36 @@
-<div ng-show="canDisplay()" class='top-buffer'>
+<div id="search-movie-list-group-container-id">
+    <div *ngIf="canDisplay()" class='top-buffer'>
 
-    <h4><span class="label label-primary">{{searchMovie.movies.length}} </span> results </h4>
+        <h4><span class="label label-primary">{{searchMovie.movies.length}} </span> results </h4>
 
-    <div class="container">
-        <div id="search-movie-list-group-container-id" class="list-group col-md-6">
-            <table class="table table-striped top-buffer">
-                <tbody>
-                <tr>
-                    <th> # </th>
-                    <th>Title</th>
-                    <th>Year</th>
-                </tr>
-                <tr ng-class="{'ng-last': $last}" ng-repeat="movie in searchMovie.movies track by $index">
-                    <td>{{$index+1}}</td>
-                    <td><a ng-href="#/detail/{{movie.Title}}/{{movie.Year}}">{{movie.Title}}</a></td>
-                    <td>{{movie.Year}}</td>
-                </tr>
-                <tbody>
-            </table>
+        <div class="container">
+            <div class="list-group col-md-6">
+                <table class="table table-striped top-buffer">
+                    <tbody>
+                    <tr>
+                        <th> #</th>
+                        <th>Title</th>
+                        <th>Year</th>
+                    </tr>
 
-            <!-- <div  >
-                  class="list-group-item">{{movie.Title}} -- <b>
-                      </b> </a>
-             </div>-->
-        </div>
+                    <tr [ngClass]="{isLast : isLastDisplayed}" *ngFor="#el of searchMovie.movies; #idx = index ; #isLastDisplayed = last">
+                        <td>{{idx+1}}</td>
+                        <td><a class="btn btn-link" (click)="goToDetail(el.Title,el.Year)">{{el.Title}}</a></td>
+                        <td>{{el.Year}}</td>
+                    </tr>
+                    <tbody>
+                </table>
 
-        <div class="wrapper col-md-6">
-            <canvas id="canvas" height="150" width="150"></canvas>
-            <div>Number Release per Year</div>
+            </div>
+
+            <div class="wrapper col-md-6">
+                <canvas id="canvas" height="150" width="150"></canvas>
+                <div>Release Number per Year</div>
+            </div>
         </div>
     </div>
-</div>
 
-<div ng-hide="canDisplay()" class="top-buffer">
-    Aucun résultat
+    <div *ngIf="!canDisplay()" class="top-buffer">
+        No result
+    </div>
 </div>

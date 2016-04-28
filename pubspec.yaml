@@ -7,16 +7,21 @@ environment:
   sdk: '>=1.13.1 <2.0.0'
 
 dependencies:
-  analyzer: "^0.26.2+1"
+  #analyzer: "^0.26.2+1"
   browser: ^0.10.0+2
-  angular: any
+  angular2: 2.0.0-beta.16
   web_components: any
   script_inliner: any
   dart_to_js_script_rewriter: any
   quiver: any
   chartjs: "^0.2.0+1"
 transformers:
-- angular
+- angular2:
+    platform_directives:
+    - package:angular2/common.dart#COMMON_DIRECTIVES
+    platform_pipes:
+     - package:angular2/common.dart#COMMON_PIPES
+    entry_points: web/main.dart
 - script_inliner
 - dart_to_js_script_rewriter
 - $dart2js:

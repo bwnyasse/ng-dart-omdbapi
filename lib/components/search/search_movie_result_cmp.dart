@@ -2,9 +2,8 @@ part of ng_dart_ombdbapi;
 
 @Component(
     selector: 'search-movie-result-cmp',
-    templateUrl: 'packages/ng_dart_ombdbapi/components/search/search_movie_result_cmp.html',
-    useShadowDom: false)
-class SearchMovieResultCmp extends ShadowRootAware {
+    templateUrl: 'package:ng_dart_ombdbapi/components/search/search_movie_result_cmp.html')
+class SearchMovieResultCmp implements OnInit, AfterViewInit, AfterViewChecked, AfterContentChecked {
 
   var colors = [
     "#ff0000",
@@ -19,43 +18,55 @@ class SearchMovieResultCmp extends ShadowRootAware {
     "#936c6c",
     "	#808080",
   ];
-  SOMDBService service;
+  final Router _router;
+  final SOMDBService _service;
   Timer timer;
   SearchMovie searchMovie;
 
 
-
-  SearchMovieResultCmp(this.service);
+  SearchMovieResultCmp(this._service,this._router);
 
   @override
-  void onShadowRoot(ShadowRoot shadowRoot) {
-    if (service.searchMovieChangeNotifier.value != null) {
-      searchMovie = service.searchMovieChangeNotifier.value;
+  void ngOnInit() {
+    if (_service.searchMovieChangeNotifier.value != null) {
+      searchMovie = _service.searchMovieChangeNotifier.value;
     }
 
-    service.searchMovieChangeNotifier.changes.listen((records) {
-      searchMovie = service.searchMovieChangeNotifier.value;
+    _service.searchMovieChangeNotifier.changes.listen((records) {
+      searchMovie = _service.searchMovieChangeNotifier.value;
     });
+  }
 
-    var div1 = document.querySelector('#search-movie-list-group-container-id');
+  @override
+  void ngAfterViewInit() {
+    var div1 = DOM.query('#search-movie-list-group-container-id');
     new MutationObserver(_mutationCallbackEnsureToDisplayCanvas).observe(
         div1, childList: true, subtree:true);
   }
 
+  @override
+  void ngAfterViewChecked() {
+
+  }
+
+  @override
+  void ngAfterContentChecked() {
+  }
+
   canDisplay() => searchMovie != null && searchMovie.movies.length != 0;
 
-
-
+  Future goToDetail(String title, String year) =>
+      _router.navigate(['Detail', {'title': title , "year":year}]);
 
   //
   void _mutationCallbackEnsureToDisplayCanvas(List<MutationRecord> mutations,
       MutationObserver observer) {
     mutations.forEach((mr) {
-        print("ici");
       mr.addedNodes.forEach((Node n) {
         if (n is Element) {
-          if (n.classes.contains('ng-last') ||
-              n.classes.contains('ng-last-add')) {
+          print(n.classes);
+          if (n.classes.contains('isLast')) {
+            print("YEAH");
             timer = new Timer(const Duration(milliseconds: 30), () {
               _buildPieChart();
               timer.cancel();
@@ -82,7 +93,9 @@ class SearchMovieResultCmp extends ShadowRootAware {
     print(searchMoviePie.toString());
     chart_js.Chart.defaults.global.responsive = true;
 
-    CanvasElement canvasElement = querySelector('#canvas') as CanvasElement;
+    var canvas = DOM.query('#canvas');
+    print("is Canvas ok  ? :" + canvas.toString());
+    CanvasElement canvasElement = canvas as CanvasElement;
     var ctx = canvasElement.context2D;
 
     // Build circular

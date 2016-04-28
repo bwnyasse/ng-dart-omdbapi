@@ -2,26 +2,29 @@ part of ng_dart_ombdbapi;
 
 @Component(
     selector: 'find-movie-by-title-result-cmp',
-    templateUrl: 'packages/ng_dart_ombdbapi/components/find/find_movie_by_title_result_cmp.html',
-    useShadowDom: false)
-class FindMovieByTitleResultCmp extends ShadowRootAware{
+    templateUrl: 'package:ng_dart_ombdbapi/components/find/find_movie_by_title_result_cmp.html')
+class FindMovieByTitleResultCmp implements OnInit {
 
-  SOMDBService service;
+  final Router _router;
+  SOMDBService _service;
   Movie movie;
 
-  FindMovieByTitleResultCmp(this.service);
+  FindMovieByTitleResultCmp(this._service,this._router);
 
   @override
-  void onShadowRoot(ShadowRoot shadowRoot) {
-    if(service.findMovieChangeNotifier.value != null){
+  void ngOnInit() {
+    if(_service.findMovieChangeNotifier.value != null){
       print("Value Change");
-      movie = service.findMovieChangeNotifier.value;
+      movie = _service.findMovieChangeNotifier.value;
     }
 
-    service.findMovieChangeNotifier.changes.listen((records){
+    _service.findMovieChangeNotifier.changes.listen((records){
       print("Value Change from Record");
-      movie = service.findMovieChangeNotifier.value;
+      movie = _service.findMovieChangeNotifier.value;
       print(movie.Poster);
     });
   }
+
+  Future goToDetail(String title, String year) =>
+      _router.navigate(['Detail', {'title': title , "year":year}]);
 }

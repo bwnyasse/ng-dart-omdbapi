@@ -1,9 +1,9 @@
 <div class="row top-buffer">
     <div class="col-lg-6">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="search ..." ng-model="searchValue">
+            <input type="text" class="form-control" placeholder="search ..." [(ngModel)]="searchValue">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="searchMovie()">Search API !</button>
+        <button class="btn btn-default" type="button" (click)="searchMovie()">Search API !</button>
       </span>
         </div><!-- /input-group -->
     </div><!-- /.col-lg-6 -->
