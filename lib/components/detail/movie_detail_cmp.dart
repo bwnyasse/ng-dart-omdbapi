@@ -1,15 +1,15 @@
 part of ng_dart_ombdbapi;
 
 @Component(
-    selector: 'movie-detail',
-    templateUrl: 'packages/ng_dart_ombdbapi/components/detail/movie_detail.html',
+    selector: 'movie-detail-cmp',
+    templateUrl: 'packages/ng_dart_ombdbapi/components/detail/movie_detail_cmp.html',
     useShadowDom: false)
-class MovieDetail extends ShadowRootAware{
+class MovieDetailCmp extends ShadowRootAware{
 
   SOMDBService service;
   Movie movie;
 
-  MovieDetail(this.service);
+  MovieDetailCmp(this.service);
 
   @override
   void onShadowRoot(ShadowRoot shadowRoot) {

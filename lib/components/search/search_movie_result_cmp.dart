@@ -1,10 +1,10 @@
 part of ng_dart_ombdbapi;
 
 @Component(
-    selector: 'search-movie-result',
-    templateUrl: 'packages/ng_dart_ombdbapi/components/search/search_movie_result.html',
+    selector: 'search-movie-result-cmp',
+    templateUrl: 'packages/ng_dart_ombdbapi/components/search/search_movie_result_cmp.html',
     useShadowDom: false)
-class SearchMovieResult extends ShadowRootAware {
+class SearchMovieResultCmp extends ShadowRootAware {
 
   var colors = [
     "#ff0000",
@@ -25,7 +25,7 @@ class SearchMovieResult extends ShadowRootAware {
 
 
 
-  SearchMovieResult(this.service);
+  SearchMovieResultCmp(this.service);
 
   @override
   void onShadowRoot(ShadowRoot shadowRoot) {

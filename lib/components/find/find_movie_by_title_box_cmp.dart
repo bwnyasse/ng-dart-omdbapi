@@ -1,15 +1,15 @@
 part of ng_dart_ombdbapi;
 
 @Component(
-    selector: 'find-movie-by-title-box',
-    templateUrl: 'packages/ng_dart_ombdbapi/components/find/find_movie_by_title_box.html',
+    selector: 'find-movie-by-title-box-cmp',
+    templateUrl: 'packages/ng_dart_ombdbapi/components/find/find_movie_by_title_box_cmp.html',
     useShadowDom: false)
-class FindMovieByTitleBox {
+class FindMovieByTitleBoxCmp {
 
   String title;
   SOMDBService service;
 
-  FindMovieByTitleBox(this.service);
+  FindMovieByTitleBoxCmp(this.service);
 
   findMovie() {
     if (quiver_strings.isNotEmpty(title)) {

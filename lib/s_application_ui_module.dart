@@ -11,15 +11,15 @@ import 'package:observe/observe.dart';
 import 'package:chartjs/chartjs.dart' as chart_js;
 import 'dart:convert';
 
-part 'components/find/find_movie_by_title_box.dart';
+part 'components/find/find_movie_by_title_box_cmp.dart';
 
-part 'components/find/find_movie_by_title_result.dart';
+part 'components/find/find_movie_by_title_result_cmp.dart';
 
-part 'components/search/search_movie_box.dart';
+part 'components/search/search_movie_box_cmp.dart';
 
-part 'components/search/search_movie_result.dart';
+part 'components/search/search_movie_result_cmp.dart';
 
-part 'components/detail/movie_detail.dart';
+part 'components/detail/movie_detail_cmp.dart';
 
 part 'injectable/s_router.dart';
 
@@ -31,15 +31,15 @@ class ApplicationUiModule extends Module {
 
   ApplicationUiModule() {
     // Component / Find
-    bind(FindMovieByTitleBox);
-    bind(FindMovieByTitleResult);
+    bind(FindMovieByTitleBoxCmp);
+    bind(FindMovieByTitleResultCmp);
 
     // Component / Search
-    bind(SearchMovieBox);
-    bind(SearchMovieResult);
+    bind(SearchMovieBoxCmp);
+    bind(SearchMovieResultCmp);
 
     // Component / Detail
-    bind(MovieDetail);
+    bind(MovieDetailCmp);
 
     // Service
     bind(SOMDBService);
