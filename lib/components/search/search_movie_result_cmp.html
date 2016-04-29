@@ -13,7 +13,7 @@
                         <th>Year</th>
                     </tr>
 
-                    <tr [ngClass]="{isLast : isLastDisplayed}" *ngFor="#el of searchMovie.movies; #idx = index ; #isLastDisplayed = last">
+                    <tr [ngClass]="{isLast : isLastDisplayed}" *ngFor="let el of searchMovie.movies; let idx = index ; let isLastDisplayed = last">
                         <td>{{idx+1}}</td>
                         <td><a class="btn btn-link" (click)="goToDetail(el.Title,el.Year)">{{el.Title}}</a></td>
                         <td>{{el.Year}}</td>

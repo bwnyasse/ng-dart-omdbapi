@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html ng-app lang="fr">
 <head>
-    <base href="/"> <!-- For testing in WebStorm -->
+    <base href="/">   <!-- For testing using pub serve directly -->
+    <!--  <base href="/ng-dart-omdbapi/web/"> For testing in WebStorm -->
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Security-Policy"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <link rel="stylesheet" href="spike.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/spike.css">
 
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-            crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <!-- Chart.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script src="js/Chart.js"></script>
 
     <!--  DART Script -->
     <script defer src="packages/browser/dart.js"></script>
     <script defer src="main.dart" type="application/dart"></script>
-
-    <!-- POLYFILLS Support script -->
-    <script defer src="packages/web_components/webcomponents.min.js"></script>
-    <script defer src="packages/web_components/dart_support.js"></script>
 
     <title>ng-dart on OMDB API</title>
 </head>
