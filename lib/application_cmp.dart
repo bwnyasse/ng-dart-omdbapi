@@ -8,8 +8,9 @@ import 'dart:html';
 import 'package:angular2/angular2.dart';
 import 'package:angular2/core.dart';
 import 'package:angular2/common.dart';
-
 import 'package:angular2/router.dart';
+import 'package:angular2/platform/common.dart';
+
 import 'package:quiver/strings.dart' as quiver_strings;
 import 'package:observe/observe.dart';
 import 'package:chartjs/chartjs.dart' as chart_js;
@@ -68,8 +69,16 @@ part 'package:ng_dart_ombdbapi/model/s_data_model.dart';
             <router-outlet></router-outlet>
       </div>
       ''',
-    directives: const [CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES],
-    providers: const [SOMDBService, ROUTER_PROVIDERS])
+    directives: const [
+      CORE_DIRECTIVES,
+      FORM_DIRECTIVES,
+      ROUTER_DIRECTIVES
+    ],
+    providers: const [
+      SOMDBService,
+      ROUTER_PROVIDERS,
+      const Provider(LocationStrategy, useClass: HashLocationStrategy)
+    ])
 @RouteConfig(const [
   const Route(
       path: '/' + ApplicationCmp.FIND,
@@ -98,4 +107,5 @@ class ApplicationCmp {
   /// Movie Full Detail
   ///
   static const String DETAIL = 'detail';
+
 }
