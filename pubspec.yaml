@@ -14,6 +14,8 @@ dependencies:
   dart_to_js_script_rewriter: any
   quiver: any
   chartjs: any
+dev_dependencies:
+  test: "^0.12.13+1"
 transformers:
 - angular2:
     platform_directives:

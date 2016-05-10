@@ -15,6 +15,7 @@ import 'package:quiver/strings.dart' as quiver_strings;
 import 'package:observe/observe.dart';
 import 'package:chartjs/chartjs.dart' as chart_js;
 import 'dart:convert';
+import 'package:ng_dart_ombdbapi/utils/s_utils.dart';
 
 
 part 'package:ng_dart_ombdbapi/components/find/find_movie_by_title_box_cmp.dart';
@@ -36,6 +37,7 @@ part 'package:ng_dart_ombdbapi/components/detail/movie_detail_cmp.dart';
 part 'package:ng_dart_ombdbapi/injectable/s_omdb_service.dart';
 
 part 'package:ng_dart_ombdbapi/model/s_data_model.dart';
+
 
 @Component(
     selector: 'my-application',
