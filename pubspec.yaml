@@ -7,17 +7,16 @@ environment:
   sdk: '>=1.13.1 <2.0.0'
 
 dependencies:
-  analyzer: "^0.26.2+1"
-  browser: ^0.10.0+2
-  angular: any
-  web_components: any
-  script_inliner: any
-  dart_to_js_script_rewriter: any
-  quiver: any
+  angular: "^1.1.2+2"
   chartjs: "^0.2.0+1"
+  dart_to_js_script_rewriter: "^1.0.1"
+  quiver: "^0.22.0"
+  web_components: "0.12.0+4"
+dev_dependencies:
+  test_runner: "^0.2.16+1"
+  unittest: "0.11.6+4"
 transformers:
 - angular
-- script_inliner
 - dart_to_js_script_rewriter
 - $dart2js:
     csp: true # Content Security Policy

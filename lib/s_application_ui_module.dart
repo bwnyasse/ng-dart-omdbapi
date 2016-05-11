@@ -6,10 +6,12 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart';
+
 import 'package:quiver/strings.dart' as quiver_strings;
 import 'package:observe/observe.dart';
 import 'package:chartjs/chartjs.dart' as chart_js;
 import 'dart:convert';
+import 'package:ng_dart_ombdbapi/utils/s_utils.dart';
 
 part 'components/find/find_movie_by_title_box_cmp.dart';
 

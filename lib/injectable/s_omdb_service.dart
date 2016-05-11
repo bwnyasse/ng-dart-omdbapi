@@ -18,7 +18,7 @@ class SOMDBService {
       map['y'] = year;
     }
 
-    final String url = _API_OMDB_URL + _encodeMapQueryParametersAsUrl(map);
+    final String url = _API_OMDB_URL + SUtils.encodeMapQueryParametersAsUrl(map);
 
     _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
       Map json = JSON.decode(response.responseText);
@@ -31,7 +31,7 @@ class SOMDBService {
     Map map = {};
     map['s'] = searchValue;
 
-    final String url = _API_OMDB_URL + _encodeMapQueryParametersAsUrl(map);
+    final String url = _API_OMDB_URL + SUtils.encodeMapQueryParametersAsUrl(map);
 
     _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
       Map json = JSON.decode(response.responseText);
@@ -60,13 +60,6 @@ class SOMDBService {
     return httpRequest;
   }
 
-  /**
-   * Transform a map of queries to a good url pattern
-   *
-   * Example : ?param1=value1&param2=value2
-   */
-  String _encodeMapQueryParametersAsUrl(Map data) =>
-      "?" + data.keys.map((key) => "${Uri.encodeComponent(key)}=${Uri
-          .encodeComponent(data[key])}").join("&");
+
 
 }
