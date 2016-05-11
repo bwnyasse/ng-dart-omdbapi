@@ -10,7 +10,7 @@
  * Author     : bwnyasse
  *
  */
-import 'packages/unittest/unittest.dart';
+import 'package:unittest/unittest.dart';
 import 'package:ng_dart_ombdbapi/utils/s_utils.dart';
 
 main() {
@@ -21,7 +21,7 @@ main() {
     map['p3'] = 'v3';
 
     String result = SUtils.encodeMapQueryParametersAsUrl(map);
-    String expected = '?p1=v1&p2=v2&p3=v3';
+    String expected = '?p1=v1&p2=v2&p3=v34';
     expect(expected, equals(result));
   });
 }
