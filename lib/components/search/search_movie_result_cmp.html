@@ -1,4 +1,69 @@
-<div id="search-movie-list-group-container-id">
+<div id="search-movie-list-group-container-id" class="module message">
+    <div *ngIf="canDisplay()">
+        <div class="module-option clearfix">
+            <div class="pull-left">
+                <div class="btn-group">
+                    <button class="btn">
+                        Inbox
+                    </button>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Inbox(11)</a></li>
+                        <li><a href="#">Sent</a></li>
+                        <li><a href="#">Draft(2)</a></li>
+                        <li><a href="#">Trash</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pull-right">
+                <a href="#" class="btn btn-primary">Compose</a>
+            </div>
+        </div>
+        <div class="module-body table">
+            <table class="table table-message">
+                <tbody>
+                <tr class="heading">
+                    <td class="cell-check">
+                        <input type="checkbox" class="inbox-checkbox">
+                    </td>
+                    <td class="cell-author hidden-phone hidden-tablet">
+                        Title
+                    </td>
+                    <td class="cell-title">
+                        Year
+                    </td>
+                </tr>
+                <tr [ngClass]="{isLast : isLastDisplayed}"
+                    *ngFor="let el of searchMovie.movies; let idx = index ; let isLastDisplayed = last" class="unread">
+                    <td class="cell-check">
+                        <input type="checkbox" class="inbox-checkbox">
+                    </td>
+                    <td class="cell-author hidden-phone hidden-tablet">
+                        <a class="btn btn-link" (click)="goToDetail(el.Title,el.Year)">{{el.Title}}</a>
+                    </td>
+                    <td class="cell-title">
+                        {{el.Year}}
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="module-foot">
+            <canvas id="canvas" height="150" width="150"></canvas>
+            <div>Release Number per Year</div>
+        </div>
+    </div>
+    <div *ngIf="!canDisplay()" class="top-buffer">
+        No result
+    </div>
+</div>
+
+<!--<div id="search-movie-list-group-container-id">
     <div *ngIf="canDisplay()" class='top-buffer'>
 
         <h4><span class="label label-primary">{{searchMovie.movies.length}} </span> results </h4>
@@ -34,3 +99,4 @@
         No result
     </div>
 </div>
+-->

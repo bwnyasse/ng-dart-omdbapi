@@ -1159,6 +1159,14 @@ form {
   font-weight: bold; }
   .message .table-message tbody tr.unread td {
     background: #FFF; }
+.message .table-message tbody tr.unread:nth-child(odd) {
+  color: #666;
+  font-weight: bold; }
+  .message .table-message tbody tr.unread:nth-child(odd) td {
+    background: #F5F5F5; }
+  .message .table-message tbody tr.unread:nth-child(odd):hover td {
+    background: #E8F6E4;
+    cursor: pointer; }
 .message .table-message tbody tr:hover td {
   background: #E8F6E4;
   cursor: pointer; }
