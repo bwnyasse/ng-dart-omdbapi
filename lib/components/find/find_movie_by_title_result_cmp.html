@@ -1,30 +1,60 @@
-<div *ngIf="movie != null" class='top-buffer'>
+<form *ngIf="movie != null" class="form-horizontal row-fluid">
 
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label class="col-sm-2 control-label"></label>
-            <div class="col-sm-10">
-                <img src="{{movie.Poster}}"/>
-            </div>
+    <div class="control-group">
+        <label class="control-label">Title :</label>
+        <div class="controls">
+            <label class="control-label span8 n-text-align-left">{{movie.Title}}</label>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Title :</label>
-            <div class="col-sm-10">
-                <label class="control-label">{{movie.Title}}</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Year :</label>
-            <div class="col-sm-10">
-                <label class="control-label">{{movie.Year}}</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label"></label>
-            <div class="col-sm-10">
-                <a class="btn btn-link" (click)="goToDetail(movie.Title,movie.Year)">See details !</a>
-            </div>
-        </div>
-    </form>
+    </div>
 
-</div>
+    <div class="control-group">
+        <label class="control-label">Year :</label>
+        <div class="controls">
+            <label class="control-label span8 n-text-align-left">{{movie.Year}}</label>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <button (click)="goToDetail(movie.Title,movie.Year)" class="btn">See details</button>
+        </div>
+    </div>
+
+</form>
+
+<!--<form *ngIf="movie != null" class="form-horizontal row-fluid">
+
+    <div class="control-group">
+        <img src="{{movie.Poster}}"/>
+    </div>
+
+    <div class="controls">
+        <label class="control-label">Title :</label>
+        <div class="controls">
+            <label class="control-label">{{movie.Title}}</label>
+        </div>
+    </div>
+
+    <div class="controls">
+        <label class="control-label">Year :</label>
+        <div class="controls">
+            <label class="control-label">{{movie.Year}}</label>
+        </div>
+    </div>
+
+    <div class="controls">
+        <label class="control-label">Year :</label>
+        <div class="controls">
+            <label class="control-label">{{movie.Year}}</label>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <button (click)="goToDetail(movie.Title,movie.Year)" class="btn">See details</button>
+        </div>
+    </div>
+
+</form>-->
+
+

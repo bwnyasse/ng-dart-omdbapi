@@ -15,7 +15,7 @@ import 'package:quiver/strings.dart' as quiver_strings;
 import 'package:observe/observe.dart';
 import 'package:chartjs/chartjs.dart' as chart_js;
 import 'dart:convert';
-import 'package:ng_dart_ombdbapi/utils/s_utils.dart';
+import 'package:ng_dart_ombdbapi/utils/s_injectable_utils.dart';
 
 
 part 'package:ng_dart_ombdbapi/components/find/find_movie_by_title_box_cmp.dart';
@@ -38,6 +38,7 @@ part 'package:ng_dart_ombdbapi/injectable/s_omdb_service.dart';
 
 part 'package:ng_dart_ombdbapi/model/s_data_model.dart';
 
+part 'package:ng_dart_ombdbapi/utils/s_components_utils.dart';
 
 @Component(
     selector: 'my-application',
@@ -49,7 +50,7 @@ part 'package:ng_dart_ombdbapi/model/s_data_model.dart';
                 <i class="icon-reorder shaded"></i>
             </a>
             <a class="brand" href="#">
-                <b>ng-dart</b> on OMDB Movies REST API
+                <b>ng-dart</b> OMDB API
             </a>
         </div>
     </div>
@@ -62,8 +63,8 @@ part 'package:ng_dart_ombdbapi/model/s_data_model.dart';
                 <div class="sidebar">
 
                     <ul class="widget widget-menu unstyled">
-                        <li><a class="active" [routerLink]="['Find']">Find by Title </a></li>
-                        <li><a [routerLink]="['Search']">Search API</a></li>
+                        <li><a id="find-by-title-widget-menu-list-id" class="active" [routerLink]="['Find']">Find by Title </a></li>
+                        <li><a id="search-api-widget-menu-list-id" [routerLink]="['Search']">Search API</a></li>
                     </ul>
 
                 </div>

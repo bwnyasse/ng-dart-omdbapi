@@ -18,7 +18,7 @@ class SOMDBService {
       map['y'] = year;
     }
 
-    final String url = _API_OMDB_URL + SUtils.encodeMapQueryParametersAsUrl(map);
+    final String url = _API_OMDB_URL + SInjectableUtils.encodeMapQueryParametersAsUrl(map);
 
     _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
       Map json = JSON.decode(response.responseText);
@@ -31,7 +31,7 @@ class SOMDBService {
     Map map = {};
     map['s'] = searchValue;
 
-    final String url = _API_OMDB_URL + SUtils.encodeMapQueryParametersAsUrl(map);
+    final String url = _API_OMDB_URL + SInjectableUtils.encodeMapQueryParametersAsUrl(map);
 
     _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
       Map json = JSON.decode(response.responseText);

@@ -11,7 +11,7 @@
  *
  */
 
-class SUtils {
+class SInjectableUtils {
 
   /**
    * Transform a map of queries to a good url pattern
