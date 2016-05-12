@@ -42,34 +42,40 @@ part 'package:ng_dart_ombdbapi/model/s_data_model.dart';
 @Component(
     selector: 'my-application',
     template: '''
-        <div class='container'>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                <i class="icon-reorder shaded"></i>
+            </a>
+            <a class="brand" href="#">
+                <b>ng-dart</b> on OMDB Movies REST API
+            </a>
+        </div>
+    </div>
+</div>
 
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#"><b>ng-dart</b> on OMDB Movies REST API</a>
-                    </div>
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <div class="sidebar">
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a [routerLink]="['Find']">Find by Title </a></li>
-                            <li><a [routerLink]="['Search']">Search API</a></li>
-                        </ul>
+                    <ul class="widget widget-menu unstyled">
+                        <li><a class="active" [routerLink]="['Find']">Find by Title </a></li>
+                        <li><a [routerLink]="['Search']">Search API</a></li>
+                    </ul>
 
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
-            <router-outlet></router-outlet>
-      </div>
+                </div>
+            </div>
+            <div class="span9">
+                <div class="content">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
       ''',
     directives: const [
       CORE_DIRECTIVES,
