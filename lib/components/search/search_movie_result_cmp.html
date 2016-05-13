@@ -27,8 +27,9 @@
             <table class="table table-message">
                 <tbody>
                 <tr class="heading">
-                    <td class="cell-check">
-                        <input type="checkbox" class="inbox-checkbox">
+                    <td (click)='selectAll()' class="cell-check">
+                        <div [hidden]='hideSelectAll()'><i class="icon n-icon-check n-icon-check-checked-white ion-android-checkbox-outline"></i></div>
+                        <div [hidden]='!hideSelectAll()'><i class="icon n-icon-check ion-android-checkbox-outline-blank"></i></div>
                     </td>
                     <td class="cell-author hidden-phone hidden-tablet">
                         Title
@@ -37,10 +38,12 @@
                         Year
                     </td>
                 </tr>
-                <tr [ngClass]="{isLast : isLastDisplayed}"
+                <tr (click)='select(el)' [ngClass]="{isLast : isLastDisplayed}"
                     *ngFor="let el of searchMovie.movies; let idx = index ; let isLastDisplayed = last" class="unread">
+                    <!--<search-movie-result-tr-cmp [movie]="el"></search-movie-result-tr-cmp>-->
                     <td class="cell-check">
-                        <input type="checkbox" class="inbox-checkbox">
+                        <div [hidden]='hideMovie(el)'><i class="icon n-icon-check n-icon-check-checked-blue  ion-android-checkbox-outline"></i></div>
+                        <div [hidden]='!hideMovie(el)'><i class="icon n-icon-check ion-android-checkbox-outline-blank"></i></div>
                     </td>
                     <td class="cell-author hidden-phone hidden-tablet">
                         <a class="btn btn-link" (click)="goToDetail(el.Title,el.Year)">{{el.Title}}</a>

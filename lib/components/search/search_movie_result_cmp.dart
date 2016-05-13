@@ -5,6 +5,7 @@ part of ng_dart_ombdbapi;
     templateUrl: 'package:ng_dart_ombdbapi/components/search/search_movie_result_cmp.html')
 class SearchMovieResultCmp implements OnInit, AfterViewInit, AfterViewChecked, AfterContentChecked {
 
+  List<Movie> selectedMovies = [];
   var colors = [
     "#ff0000",
     "#0080ff",
@@ -18,13 +19,13 @@ class SearchMovieResultCmp implements OnInit, AfterViewInit, AfterViewChecked, A
     "#936c6c",
     "	#808080",
   ];
-  final Router _router;
+
   final SOMDBService _service;
   Timer timer;
   SearchMovie searchMovie;
+  String cssChecked;
 
-
-  SearchMovieResultCmp(this._service,this._router);
+  SearchMovieResultCmp(this._service);
 
   @override
   void ngOnInit() {
@@ -55,9 +56,28 @@ class SearchMovieResultCmp implements OnInit, AfterViewInit, AfterViewChecked, A
 
   canDisplay() => searchMovie != null && searchMovie.movies.length != 0;
 
-  Future goToDetail(String title, String year) =>
-      _router.navigate(['Detail', {'title': title , "year":year}]);
+  hideMovie(Movie movie) => searchMovie != null && movie!=null && selectedMovies.contains(movie);
 
+  void select(Movie movie) {
+    if(!selectedMovies.contains(movie)){
+      selectedMovies.add(movie);
+      cssChecked = 'ion-android-checkbox-outline';
+    }else{
+      selectedMovies.remove(movie);
+      cssChecked = 'ion-android-checkbox-outline-blank';
+    }
+  }
+
+  void selectAll() {
+    if(selectedMovies.isNotEmpty){
+      selectedMovies.clear();
+    }else{
+      selectedMovies.clear();
+      selectedMovies.addAll(searchMovie.movies);
+    }
+  }
+
+  hideSelectAll() => selectedMovies.length == searchMovie.movies.length;
   //
   void _mutationCallbackEnsureToDisplayCanvas(List<MutationRecord> mutations,
       MutationObserver observer) {
@@ -110,5 +130,6 @@ class SearchMovieResultCmp implements OnInit, AfterViewInit, AfterViewChecked, A
     });
 
     new chart_js.Chart(ctx).Pie(dataList);
+
   }
 }
