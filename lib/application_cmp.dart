@@ -28,6 +28,12 @@ part 'package:ng_dart_ombdbapi/components/search/search_route_cmp.dart';
 
 part 'package:ng_dart_ombdbapi/components/search/search_movie_box_cmp.dart';
 
+part 'package:ng_dart_ombdbapi/components/datatable/datatable_route_cmp.dart';
+
+part 'package:ng_dart_ombdbapi/components/datatable/datatable_box_cmp.dart';
+
+part 'package:ng_dart_ombdbapi/components/datatable/datatable_result_movie_cmp.dart';
+
 part 'package:ng_dart_ombdbapi/components/search/search_movie_result_cmp.dart';
 
 part 'package:ng_dart_ombdbapi/components/detail/detail_route_cmp.dart';
@@ -65,6 +71,7 @@ part 'package:ng_dart_ombdbapi/utils/s_components_utils.dart';
                     <ul class="widget widget-menu unstyled">
                         <li><a id="find-by-title-widget-menu-list-id" class="active" [routerLink]="['Find']">Find by Title </a></li>
                         <li><a id="search-api-widget-menu-list-id" [routerLink]="['Search']">Search API</a></li>
+                        <li><a id="datatable-api-widget-menu-list-id" [routerLink]="['Datatable']">Datatable Example</a></li>
                     </ul>
 
                 </div>
@@ -98,6 +105,10 @@ part 'package:ng_dart_ombdbapi/utils/s_components_utils.dart';
       path: '/' + ApplicationCmp.SEARCH,
       name: 'Search',
       component: SearchRouteCmp),
+  const Route(
+      path: '/' + ApplicationCmp.DATATABLE,
+      name: 'Datatable',
+      component: DatatableRouteCmp),
   const Route(path: '/' + ApplicationCmp.DETAIL + '/:title' + '/:year',
       name: 'Detail',
       component: DetailRouteCmp)
@@ -112,6 +123,10 @@ class ApplicationCmp {
   /// Search
   ///
   static const String SEARCH = 'search';
+
+  /// Datatable
+  ///
+  static const String DATATABLE = 'datatable';
 
   /// Movie Full Detail
   ///

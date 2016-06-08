@@ -40,6 +40,7 @@ class Movie {
   String Language;
   String Awards;
   String Director;
+  String Appreciation;
 
   Movie.fromOMDBApi(Map json)
       : Poster=json['Poster'],

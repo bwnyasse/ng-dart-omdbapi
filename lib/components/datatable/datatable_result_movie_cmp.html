@@ -1,0 +1,48 @@
+<div id="search-movie-list-group-container-id" class="module message">
+    <div *ngIf="canDisplay()">
+        <div class="module-option clearfix">
+            <div class="pull-right">
+                <a  class="btn btn-primary" (click)="seeAll()">Voir</a>
+            </div>
+        </div>
+        <div class="module-body table">
+            <table class="table table-message">
+                <tbody>
+                <tr class="heading">
+                    <td> # </td>
+                    <td class="cell-author hidden-phone hidden-tablet">
+                        Title
+                    </td>
+                    <td class="cell-title">
+                        Year
+                    </td>
+                    <td class="cell-title">
+                        Appreciation
+                    </td>
+                </tr>
+                <tr (click)='select(el)' [ngClass]="{isLast : isLastDisplayed}"
+                    *ngFor="let el of searchMovie.movies; let idx = index ; let isLastDisplayed = last" class="unread">
+                    <td class="cell-check">
+                        <div [hidden]='hideMovie(el)'><i class="icon n-icon-check n-icon-check-checked-blue  ion-android-checkbox-outline"></i></div>
+                        <div [hidden]='!hideMovie(el)'><i class="icon n-icon-check ion-android-checkbox-outline-blank"></i></div>
+                    </td>
+                    <td class="cell-author hidden-phone hidden-tablet">
+                        <a class="btn btn-link" (click)="goToDetail(el.Title,el.Year)">{{el.Title}}</a>
+                    </td>
+                    <td class="cell-title">
+                        {{el.Year}}
+                    </td>
+                    <td>
+                        <input type="text"  placeholder="search ..." [(ngModel)]="el.Appreciation">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div *ngIf="!canDisplay()" class="top-buffer">
+        No result
+    </div>
+</div>
+

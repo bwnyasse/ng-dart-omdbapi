@@ -8,7 +8,6 @@ class SearchRouteCmp implements OnInit , AfterViewInit{
 
   @override
   void ngOnInit() {
-
   }
 
 

@@ -5,20 +5,25 @@ class SOMDBService {
 
   static String _API_OMDB_URL = 'http://www.omdbapi.com/';
 
-  FindMovieChangeNotifier findMovieChangeNotifier = new FindMovieChangeNotifier(null);
-  SearchMovieChangeNotifier searchMovieChangeNotifier = new SearchMovieChangeNotifier(null);
+  FindMovieChangeNotifier findMovieChangeNotifier = new FindMovieChangeNotifier(
+      null);
+  SearchMovieChangeNotifier searchMovieChangeNotifier = new SearchMovieChangeNotifier(
+      null);
+  SearchMovieChangeNotifier searchMovieDatatableChangeNotifier = new SearchMovieChangeNotifier(
+      null);
 
-  void findMovieByTitle(String title,[String year]) {
+  void findMovieByTitle(String title, [String year]) {
     Map map = {};
     map['t'] = title;
     map['plot'] = 'short';
     map['r'] = 'json';
 
-    if(quiver_strings.isNotEmpty(year)){
+    if (quiver_strings.isNotEmpty(year)) {
       map['y'] = year;
     }
 
-    final String url = _API_OMDB_URL + SInjectableUtils.encodeMapQueryParametersAsUrl(map);
+    final String url = _API_OMDB_URL +
+        SInjectableUtils.encodeMapQueryParametersAsUrl(map);
 
     _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
       Map json = JSON.decode(response.responseText);
@@ -27,18 +32,27 @@ class SOMDBService {
     });
   }
 
-  void searchMovieWithApi(String searchValue){
+  void searchMovieWithApi(String searchValue) {
+    _searchMovieWithApiNotifier(searchValue, searchMovieChangeNotifier);
+  }
+
+  void searchMovieWithApiForDatatable(String searchValue) {
+    _searchMovieWithApiNotifier(
+        searchValue, searchMovieDatatableChangeNotifier);
+  }
+
+  void _searchMovieWithApiNotifier(String searchValue,
+      SearchMovieChangeNotifier notifier) {
     Map map = {};
     map['s'] = searchValue;
 
-    final String url = _API_OMDB_URL + SInjectableUtils.encodeMapQueryParametersAsUrl(map);
+    final String url = _API_OMDB_URL +
+        SInjectableUtils.encodeMapQueryParametersAsUrl(map);
 
     _performServerApiCall(url, method: 'GET').then((HttpRequest response) {
       Map json = JSON.decode(response.responseText);
       SearchMovie searchMovie = new SearchMovie.fromOMDBApi(json);
-      print(searchMovie.totalResults.toString());
-      print(searchMovie.movies.length.toString());
-      searchMovieChangeNotifier.value = searchMovie;
+      notifier.value = searchMovie;
     });
   }
 
